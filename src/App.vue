@@ -1,18 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <b-navbar id="nav" toggleable="md" >
+      <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+      <b-navbar-brand to="/">Hotel Manager</b-navbar-brand>
+      <b-collapse is-nav id="nav_collapse">
+        <b-navbar-nav>
+          <b-nav-item to="/#"><i class="fa fa-home" style="padding: 5px"> Home</i></b-nav-item>
+          <b-nav-item to="/Guests"><i class="fa fa-list" style="padding: 5px">Guests</i></b-nav-item>
+          <b-nav-item to="/Rooms"><i class="fa fa-list" style="padding: 5px">Rooms</i></b-nav-item>
+        </b-navbar-nav>
+        <b-navbar-nav class="ml-auto">
+          <b-nav-item to="/login"><i class="fa fa-sign-in" style="padding: 5px"> Login </i></b-nav-item>
+          <b-nav-item to="/logout"><i class="fa fa-sign-out" style="padding: 5px"> Logout </i></b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
 }
 </script>
 
@@ -22,7 +31,14 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  text-decoration-color: #ffffff;
+}
+
+#nav {
+  background-color: darkcyan;
+}
+
+.fa{
+  color: white;
 }
 </style>
