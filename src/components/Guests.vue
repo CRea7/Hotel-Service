@@ -3,6 +3,7 @@
         <h3 class="vue-title"><i class="fa fa-list" style="padding: 3px"></i>{{messagetitle}}</h3>
         <div id="app1">
             <v-client-table :columns="columns" :data="guests" :options="options">
+                <a slot="remove" slot-scope="props" class="fa fa-trash-o fa-2x" @click="deleteGuest(props.row._id)"></a>
             </v-client-table>
         </div>
     </div>
@@ -22,7 +23,7 @@
                 messagetitle: ' guests ',
                 guests: [],
                 errors: [],
-                columns: ['name', 'people', 'roomno', 'breakfast', 'roomtype', 'check'],
+                columns: ['name', 'people', 'roomno', 'breakfast', 'roomtype', 'check', 'remove'],
                 options: {
                     headings: {
                         name: 'name',
@@ -50,6 +51,16 @@
                     .catch(error => {
                         this.errors.push(error);
                         // eslint-disable-next-line no-console
+                        console.log(error)
+                    })
+            },
+            deleteGuest: function (id) {
+                hotelservice.deleteGuest(id)
+                    .then(response => {
+                        this.loadDonations()
+                    })
+                    .catch(error => {
+                        this.errors.push(error)
                         console.log(error)
                     })
             }

@@ -10,5 +10,9 @@ export default {
     postGuests (guest) {
         return Api().post('/guests', guest,
             { headers: {'Content-type': 'application/json'} })
+    },
+
+    deleteGuest (id) {
+        return Api().delete(`/guests/${id}`)
     }
 }
