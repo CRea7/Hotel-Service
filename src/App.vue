@@ -7,6 +7,7 @@
         <b-navbar-nav>
           <b-nav-item to="/#"><i class="fa fa-home" style="padding: 5px"> Home</i></b-nav-item>
           <b-nav-item to="/Guests"><i class="fa fa-list" style="padding: 5px">Guests</i></b-nav-item>
+          <b-nav-item to="/Add"><i class="fa fa-list" style="padding: 5px">Add</i></b-nav-item>
           <b-nav-item to="/Rooms"><i class="fa fa-list" style="padding: 5px">Rooms</i></b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
