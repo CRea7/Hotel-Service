@@ -54,15 +54,47 @@
                         console.log(error)
                     })
             },
+            // deleteGuest: function (id) {
+            //     hotelservice.deleteGuest(id)
+            //         .then(response => {
+            //             this.loadDonations()
+            //         })
+            //         .catch(error => {
+            //             this.errors.push(error)
+            //             console.log(error)
+            //         })
+            // }
             deleteGuest: function (id) {
-                hotelservice.deleteGuest(id)
-                    .then(response => {
-                        this.loadDonations()
-                    })
-                    .catch(error => {
-                        this.errors.push(error)
-                        console.log(error)
-                    })
+                this.$swal({
+                    title: 'Are you totaly sure?',
+                    text: 'You can\'t Undo this action',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'OK Delete it',
+                    cancelButtonText: 'Cancel',
+                    showCloseButton: true,
+                    showLoaderOnConfirm: true
+                }).then((result) => {
+                    console.log('SWAL Result : ' + result);
+                    if (result === true) {
+                         hotelservice.deleteGuest(id)
+                            .then(response => {
+                                // JSON responses are automatically parsed.
+                                this.message = response.data;
+                                console.log(this.message);
+                                this.loadGuests();
+                                // Vue.nextTick(() => this.$refs.vuetable.refresh())
+                                this.$swal('Deleted', 'You successfully deleted this Donation ' + JSON.stringify(response.data, null, 5), 'success')
+                            })
+                            .catch(error => {
+                                this.$swal('ERROR', 'Something went wrong trying to Delete ' + error, 'error');
+                                this.errors.push(error);
+                                console.log(error)
+                            })
+                    } else {
+                        this.$swal('Cancelled', 'Your Donation still Counts!', 'info')
+                    }
+                })
             }
         }
     }
