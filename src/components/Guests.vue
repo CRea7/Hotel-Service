@@ -4,6 +4,8 @@
         <div id="app1">
             <v-client-table :columns="columns" :data="guests" :options="options">
                 <a slot="remove" slot-scope="props" class="fa fa-trash-o fa-2x" @click="deleteGuest(props.row._id)"></a>
+                <a slot="assign" slot-scope="props" class="fa fa-plus fa-2x" @click="assignGuest(props.row._id)"></a>
+                <a slot="checkout" slot-scope="props" class="fa fa-minus fa-2x" @click="checkoutGuest(props.row._id)"></a>
             </v-client-table>
         </div>
     </div>
@@ -23,7 +25,8 @@
                 messagetitle: ' guests ',
                 guests: [],
                 errors: [],
-                columns: ['name', 'people', 'roomno', 'breakfast', 'roomtype', 'check', 'remove'],
+                props: ['_id'],
+                columns: ['name', 'people', 'roomno', 'breakfast', 'roomtype', 'check', 'remove', 'assign', 'checkout'],
                 options: {
                     headings: {
                         name: 'name',
@@ -64,6 +67,28 @@
             //             console.log(error)
             //         })
             // }
+            assignGuest: function (id) {
+                hotelservice.assignGuest(id)
+                    .then(response => {
+                        console.log(response);
+                        this.loadGuests();
+                    })
+                    .catch(error => {
+                        this.errors.push(error)
+                        console.log(error)
+                    })
+            },
+            checkoutGuest: function (id) {
+                hotelservice.checkoutGuest(id)
+                    .then(response => {
+                        console.log(response);
+                        this.loadGuests();
+                    })
+                    .catch(error => {
+                        this.errors.push(error)
+                        console.log(error)
+                    })
+            },
             deleteGuest: function (id) {
                 this.$swal({
                     title: 'Are you totaly sure?',

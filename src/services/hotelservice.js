@@ -14,5 +14,13 @@ export default {
 
     deleteGuest (id) {
         return Api().delete(`/guests/${id}`)
+    },
+
+    assignGuest (id) {
+        return Api().put(`/rooms/assign/${id}`)
+    },
+
+    checkoutGuest (id) {
+        return Api().put(`/rooms/checkout/${id}`)
     }
 }
