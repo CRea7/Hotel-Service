@@ -4,8 +4,8 @@
         <div id="app1">
             <v-client-table :columns="columns" :data="guests" :options="options">
                 <a slot="remove" slot-scope="props" class="fa fa-trash-o fa-2x" @click="deleteGuest(props.row._id)"></a>
-                <a slot="assign" slot-scope="props" class="fa fa-plus fa-2x" @click="assignGuest(props.row._id)"></a>
-                <a slot="checkout" slot-scope="props" class="fa fa-minus fa-2x" @click="checkoutGuest(props.row._id)"></a>
+                <a slot="assign" id="assign" slot-scope="props,option" class="fa fa-plus fa-2x" @click="assignGuest(props.row._id)"></a>
+                <a slot="checkout" id="check" slot-scope="props,option" class="fa fa-minus fa-2x" @click="checkoutGuest(props.row._id)"></a>
             </v-client-table>
         </div>
     </div>
@@ -26,6 +26,7 @@
                 guests: [],
                 errors: [],
                 props: ['_id'],
+                option: ['check'],
                 columns: ['name', 'people', 'roomno', 'breakfast', 'roomtype', 'check', 'remove', 'assign', 'checkout'],
                 options: {
                     headings: {
@@ -72,6 +73,7 @@
                     .then(response => {
                         console.log(response);
                         this.loadGuests();
+                        alert("Guest has been assigned room")
                     })
                     .catch(error => {
                         this.errors.push(error)
@@ -83,6 +85,7 @@
                     .then(response => {
                         console.log(response);
                         this.loadGuests();
+                        alert("Guest has been checked out")
                     })
                     .catch(error => {
                         this.errors.push(error)
@@ -136,5 +139,9 @@
     #app1 {
         width: 80%;
         margin: 0 auto;
+    }
+
+    assign{
+        visibility: hidden;
     }
 </style>
