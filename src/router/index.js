@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Guests from '@/components/Guests'
 import GuestAdd from '@/components/GuestAdd'
 import Rooms from '@/components/Rooms'
+import Login from "@/components/Login";
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
             path:'/rooms',
             name: 'rooms',
             component: Rooms
+        },
+        {
+            path:'/users/login',
+            name:'login',
+            component: Login
         }
     ]
 })

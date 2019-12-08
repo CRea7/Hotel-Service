@@ -39,4 +39,15 @@ export default {
     maintainRooms (id) {
         return Api().put(`/rooms/maintain/${id}`)
     },
+
+    //Users section
+
+    loginUsers (user) {
+        return Api().post('/users/login', user,
+            { headers: {'Content-type': 'application/json'} })
+    },
+
+    logoutUsers () {
+        return Api().put('/users/logout')
+    }
 }

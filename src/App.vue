@@ -11,8 +11,8 @@
           <b-nav-item to="/Rooms"><i class="fa fa-list" style="padding: 5px">Rooms</i></b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
-          <b-nav-item to="/login"><i class="fa fa-sign-in" style="padding: 5px"> Login </i></b-nav-item>
-          <b-nav-item to="/logout"><i class="fa fa-sign-out" style="padding: 5px"> Logout </i></b-nav-item>
+          <b-nav-item to="/users/login"><i class="fa fa-sign-in" style="padding: 5px"> Login </i></b-nav-item>
+          <b-nav-item to="/users/logout"><i class="fa fa-sign-out" style="padding: 5px" @click="logoutUsers"> Logout </i></b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -21,9 +21,28 @@
 </template>
 
 <script>
+  import hotelservice from "@/services/hotelservice";
+
 export default {
   name: 'app',
+
+  methods: {
+    logoutUsers: function (id) {
+      hotelservice.logoutUsers(id)
+              .then(response => {
+                console.log(response);
+                window.location.href = '/#/#';
+                alert("Logged out");
+              })
+              .catch(error => {
+                this.errors.push(error)
+                console.log(error)
+              })
+    }
+  }
 }
+
+
 </script>
 
 <style>

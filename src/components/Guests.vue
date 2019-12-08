@@ -4,8 +4,8 @@
         <div id="app1">
             <v-client-table :columns="columns" :data="guests" :options="options">
                 <a slot="remove" slot-scope="props" class="fa fa-trash-o fa-2x" @click="deleteGuest(props.row._id)"></a>
-                <a slot="assign" id="assign" slot-scope="props,option" class="fa fa-plus fa-2x" @click="assignGuest(props.row._id)"></a>
-                <a slot="checkout" id="check" slot-scope="props,option" class="fa fa-minus fa-2x" @click="checkoutGuest(props.row._id)"></a>
+                <a slot="assign" id="assign" slot-scope="props" class="fa fa-plus fa-2x" @click="assignGuest(props.row._id)"></a>
+                <a slot="checkout" id="check" slot-scope="props" class="fa fa-minus fa-2x" @click="checkoutGuest(props.row._id)"></a>
             </v-client-table>
         </div>
     </div>
