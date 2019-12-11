@@ -1,7 +1,15 @@
 const apiURL = "http://localhost:3000/guests/";
+const logURL = "http://localhost:3000/users/login/";
 
 describe("Manage Guests page", () => {
   beforeEach(() => {
+    cy.fixture("user").then(users => {
+      let [d1] = users;
+      let one = [d1];
+      one.forEach(user => {
+        cy.request("POST", logURL,user);
+      });
+    });
     // Delete all guests in the API's datastore
     cy.request(apiURL)
       .its("body")
