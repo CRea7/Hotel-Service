@@ -1,25 +1,25 @@
-const apiURL = "https://donations-api-staging.herokuapp.com/donations/";
+const apiURL = "http://localhost:3000/guests/";
 
-describe("Manage Donations page", () => {
+describe("Manage Guests page", () => {
   beforeEach(() => {
-    // Delete all donations in the API's datastore
+    // Delete all guests in the API's datastore
     cy.request(apiURL)
       .its("body")
-      .then(donations => {
-        donations.forEach(element => {
+      .then(guests => {
+        guests.forEach(element => {
           cy.request("DELETE", `${apiURL}${element._id}`);
         });
       });
     // Populate API's datastore
-    cy.fixture("donations").then(donations => {
-      let [d1, d2, d3, d4, ...rest] = donations;
+    cy.fixture("guests").then(guests => {
+      let [d1, d2, d3, d4, ...rest] = guests;
       let four = [d1, d2, d3, d4];
-      four.forEach(donation => {
-        cy.request("POST", apiURL, donation);
+      four.forEach(guest => {
+        cy.request("POST", apiURL, guest);
       });
     });
     cy.visit("/");
-    // Click Manage Donations navbar link
+    // Click Manage guests navbar link
     cy.get(".navbar-nav")
       .eq(0)
       .find(".nav-item")
