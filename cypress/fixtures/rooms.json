@@ -1,0 +1,6 @@
+[
+  {"number": 1, "roomtype": "double", "capacity": 2, "guest": "empty", "state": "Ready"},
+  {"number": 2, "roomtype": "family", "capacity": 6, "guest": "empty", "state": "Ready"},
+  {"number": 3, "roomtype": "single", "capacity": 1, "guest": "empty", "state": "Ready"},
+  {"number": 4, "roomtype": "family", "capacity": 6, "guest": "empty", "state": "Ready"}
+]
