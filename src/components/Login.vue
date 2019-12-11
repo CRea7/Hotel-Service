@@ -8,11 +8,11 @@
                     <form @submit.prevent="submit">
                         <div class="form-group" :class="{ 'form-group--error': $v.name.$error }">
                             <label class="form__label">Name</label>
-                            <input class="form__input" v-model.trim="$v.name.$model"/>
+                            <input class="form__input" data-test="user" v-model.trim="$v.name.$model"/>
                         </div>
                         <div class="form-group" :class="{ 'form-group--error': $v.password.$error }">
                             <label class="form_label" >Password</label>
-                            <input class="form__input, passInput" type="password" v-model.trim="password"/>
+                            <input class="form__input, passInput" data-test="password" type="password" v-model.trim="password"/>
                         </div>
                         <p>
                             <button class="btn btn-primary btn1" type="submit" :disabled="submitStatus === 'PENDING'">Login</button>
