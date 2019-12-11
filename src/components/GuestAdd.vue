@@ -8,12 +8,12 @@
                     <form @submit.prevent="submit">
                         <div class="form-group" :class="{ 'form-group--error': $v.name.$error }">
                             <label class="form__label">Name of guest</label>
-                            <input class="form__input" v-model.trim="$v.name.$model"/>
+                            <input data-test="guest" class="form__input" v-model.trim="$v.name.$model"/>
                         </div>
                         <div class="form-group" :class="{ 'form-group--error': $v.people.$error }">
                             <div class="error" v-if="!$v.people.between">guests must be between 1 and 6</div>
                             <label class="form-control-label" name="people">Number of guests</label>
-                            <input class="form__input" type="number" v-model.trim="people"/>
+                            <input class="form__input" data-test="number" type="number" v-model.trim="people"/>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Select Room Type</label>

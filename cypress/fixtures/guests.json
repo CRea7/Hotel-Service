@@ -1,0 +1,8 @@
+[
+    { "name": "Tom Green", "people": 3, "roomno": 0, "breakfast": "true", "roomtype": "family", "check": "waiting"},
+    { "name": "Alice Chains", "people": 2, "roomno": 0, "breakfast": "true", "roomtype": "double", "check": "waiting"},
+    { "name": "Joe Smith", "people": 1, "roomno": 1, "breakfast": "false", "roomtype": "single", "check": "in"},
+    { "name": "Nicole Spade", "people": 2, "roomno": 2, "breakfast": "true", "roomtype": "double", "check": "in"},
+    { "name": "Ham Pig", "people": 1, "roomno": 55, "breakfast": "true", "roomtype": "single", "check": "out"},
+    { "name": "Reek Snow", "people": 3, "roomno": 6, "breakfast": "true", "roomtype": "family", "check": "in"}
+]
