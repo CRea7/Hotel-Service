@@ -1,7 +1,15 @@
 const apiURL = "http://localhost:3000/guests/";
+const logURL = "http://localhost:3000/users/login/";
 
 describe("add guest page", () => {
   beforeEach(() => {
+    cy.fixture("user").then(users => {
+      let [d1] = users;
+      let one = [d1];
+      one.forEach(user => {
+        cy.request("POST", logURL,user);
+      });
+    });
     cy.request(apiURL)
       .its("body")
       .then(guests => {

@@ -1,7 +1,32 @@
 const apiURL = "http://localhost:3000/guests/";
+const roomURL = "http://localhost:3000/rooms/";
+const logURL = "http://localhost:3000/users/login/";
 
 describe("Manage Guests page", () => {
   beforeEach(() => {
+    cy.fixture("user").then(users => {
+      let [d1] = users;
+      let one = [d1];
+      one.forEach(user => {
+        cy.request("POST", logURL,user);
+      });
+    });
+
+    cy.request(roomURL)
+        .its("body")
+        .then(rooms => {
+          rooms.forEach(element => {
+            cy.request("DELETE", `${roomURL}${element._id}`);
+          });
+        });
+    // Populate API's datastore
+    cy.fixture("rooms").then(rooms => {
+      let [d1, d2, d3, d4, ...rest] = rooms;
+      let four = [d1, d2, d3, d4];
+      four.forEach(room => {
+        cy.request("POST", roomURL, room);
+      });
+    });
     // Delete all guests in the API's datastore
     cy.request(apiURL)
       .its("body")
@@ -68,6 +93,90 @@ describe("Manage Guests page", () => {
       cy.get("tbody")
         .find("tr")
         .should("have.length", 4);
+    });
+  });
+
+  describe("assign a guest to a room", () => {
+    it("assign a guest to a room", () => {
+      cy.get("tbody")
+          .find("tr")
+          .should("have.length", 4);
+      // Click trash/delete link of 3rd donation in list
+      cy.get("tbody")
+          .find("tr")
+          .eq(1)
+          .find("td")
+          .eq(7)
+          .find("a")
+          .click();
+      // Click confirmation button
+      cy.wait(100);
+      cy.get("tbody")
+          .find("tr")
+          .eq(1)
+          .find("td")
+          .eq(5)
+          .invoke('text').should('include', 'in')
+    });
+  });
+  describe("assign a guest to a room with no rooms available", () => {
+    it("not assign a guest to a room", () => {
+      cy.get("tbody")
+          .find("tr")
+          .should("have.length", 4);
+      // Click trash/delete link of 3rd donation in list
+      cy.get("tbody")
+          .find("tr")
+          .eq(1)
+          .find("td")
+          .eq(7)
+          .find("a")
+          .click();
+      cy.get("tbody")
+          .find("tr")
+          .eq(2)
+          .find("td")
+          .eq(7)
+          .find("a")
+          .click();
+      cy.get("tbody")
+          .find("tr")
+          .eq(2)
+          .find("td")
+          .eq(5)
+          .invoke('text').should('include', 'waiting')
+      // Click confirmation button
+
+    });
+  });
+  describe("check user out of a room", () => {
+    it("check the user out", () => {
+      cy.get("tbody")
+          .find("tr")
+          .should("have.length", 4);
+      // Click trash/delete link of 3rd donation in list
+      cy.get("tbody")
+          .find("tr")
+          .eq(1)
+          .find("td")
+          .eq(7)
+          .find("a")
+          .click();
+      cy.get("tbody")
+          .find("tr")
+          .eq(1)
+          .find("td")
+          .eq(8)
+          .find("a")
+          .click();
+      cy.get("tbody")
+          .find("tr")
+          .eq(1)
+          .find("td")
+          .eq(5)
+          .invoke('text').should('include', 'out')
+      // Click confirmation button
+
     });
   });
 });
