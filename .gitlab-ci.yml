@@ -38,5 +38,4 @@ preview - production:
     - npm install
     - npm run clean
     - npm run build
-    - cp DNAME dist/
-    - node_modules/.bin/surge dist
+    - node_modules/.bin/surge dist hotelservice-production.surge.sh
