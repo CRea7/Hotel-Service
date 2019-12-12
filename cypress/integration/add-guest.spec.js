@@ -1,5 +1,5 @@
-const apiURL = "http://localhost:3000/guests/";
-const logURL = "http://localhost:3000/users/login/";
+const apiURL = "https://hotel-api-staging.herokuapp.com/guests/";
+const logURL = "https://hotel-api-staging.herokuapp.com/users/login/";
 
 describe("add guest page", () => {
   beforeEach(() => {

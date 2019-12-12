@@ -1,6 +1,6 @@
-const apiURL = "http://localhost:3000/guests/";
-const roomURL = "http://localhost:3000/rooms/";
-const logURL = "http://localhost:3000/users/login/";
+const apiURL = "https://hotel-api-staging.herokuapp.com/guests/";
+const roomURL = "https://hotel-api-staging.herokuapp.com/rooms/";
+const logURL = "https://hotel-api-staging.herokuapp.com/users/login/";
 
 describe("Manage Guests page", () => {
   beforeEach(() => {

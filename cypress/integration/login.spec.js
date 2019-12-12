@@ -1,4 +1,4 @@
-const apiURL = "http://localhost:3000/guests/";
+const apiURL = "https://hotel-api-staging.herokuapp.com/guests/";
 
 describe("add guest page", () => {
     describe("login user", () => {
