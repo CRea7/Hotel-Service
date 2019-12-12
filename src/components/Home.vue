@@ -1,20 +1,6 @@
 <template>
     <div class="hero">
-        <h1 class="vue-title">Conor for President !!</h1>
-
-        <table align="center">
-            <tr>
-                <td>
-                    <p class="lead"><b><i>Time for a change !!</i></b>
-                    <p>Out with Boring Prumt - Giving has never been so easy.</p>
-                    <p>Just click <a href ="/">here</a> to go to</p>
-                    <p>the Donation page and empty your wallet</p>
-                </td>
-            </tr>
-        </table>
-
-        <p></p>
-        <p class="lead">This is the homepage of your <b>MEVN</b> Web app</p>
+        <h1 class="vue-title">Dashboard</h1>
     </div>
 </template>
 

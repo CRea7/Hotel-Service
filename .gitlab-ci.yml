@@ -3,6 +3,7 @@ image: node:latest
 
 stages:
   - build
+  - test
   - deploy
 
 cache:
@@ -18,6 +19,15 @@ Build:
     paths:
       - node_modules/
       - dist/
+
+Testing:
+  image: cypress/base:10
+  stage: test
+  before_script:
+    - npm run clean
+    - npm install
+  script:
+    - npm run test
 
 preview - staging:
   stage: deploy

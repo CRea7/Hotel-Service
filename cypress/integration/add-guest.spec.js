@@ -48,7 +48,7 @@ describe("add guest page", () => {
       //broke in pc switch will try get back it soon
       after(() => {
         cy.wait(100)
-        // Click Manage Donations
+        // Click Manage Guests
         cy.get(".navbar-nav")
         .eq(0)
         .find(".nav-item")
@@ -66,7 +66,7 @@ describe("add guest page", () => {
       });
       after(() => {
         cy.wait(100)
-        // Click Manage Donations
+        // Click Manage Guests
         cy.get(".navbar-nav")
         .eq(0)
         .find(".nav-item")
