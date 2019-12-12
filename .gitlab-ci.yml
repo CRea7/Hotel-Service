@@ -19,7 +19,7 @@ Build:
       - node_modules/
       - dist/
 
-preview:
+preview - staging:
   stage: deploy
   script:
     - npm install
@@ -29,3 +29,14 @@ preview:
     - node_modules/.bin/surge dist
   except:
     - master
+
+preview - production:
+  only:
+    - master
+  stage: deploy
+  script:
+    - npm install
+    - npm run clean
+    - npm run build
+    - cp DNAME dist/
+    - node_modules/.bin/surge dist
