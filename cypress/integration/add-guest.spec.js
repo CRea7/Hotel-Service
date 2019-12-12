@@ -45,7 +45,7 @@ describe("add guest page", () => {
         cy.get("button[type=submit]").click();
         cy.contains("Reservation recived!").should("exist");
       });
-      //broke in pc switch will try get back it it
+      //broke in pc switch will try get back it soon
       after(() => {
         cy.wait(100)
         // Click Manage Donations
