@@ -1,6 +1,6 @@
 <template>
     <div class="hero">
-        <h1 class="vue-title">Dashboard</h1>
+        <h1 class="vue-title">Charts</h1>
     </div>
 </template>
 
