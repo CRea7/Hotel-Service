@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "cross-env NODE_ENV=dev vue-cli-service serve",
     "build": "vue-cli-service build",
     "clean": "rimraf ./dist && mkdir dist",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "lint": "vue-cli-service lint",
+    "start": "npm-run-all serve",
     "cypress": "cypress run --record --key 745b2d57-d2a3-4f91-94e9-553bd1469023",
     "test": "start-server-and-test start http://localhost:8080 cypress"
   },
