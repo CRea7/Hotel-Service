@@ -41,7 +41,7 @@ describe("add guest page", () => {
         cy.get("input[data-test=number]").type(2);
         cy.get('#breakfast').select('yes');
         cy.contains("Reservation recived!").should("not.exist");
-        cy.get(".error").should("not.exist");
+        //cy.get(".error").should("not.exist");
         cy.get("button[type=submit]").click();
         cy.contains("Reservation recived!").should("exist");
       });
@@ -74,7 +74,7 @@ describe("add guest page", () => {
         .click();
         cy.get("tbody")
           .find("tr")
-          //.should("have.length", 4);
+          .should("have.length", 4);
       });
     });
   });
