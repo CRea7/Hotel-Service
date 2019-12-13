@@ -29,6 +29,7 @@ Testing:
     - npm install cypress --save
     - npm install start-server-and-test --save
     - npm install http-server --save
+    - npm i npm-run-all
     - npm install @vue/cli
   script:
     - npm run test
