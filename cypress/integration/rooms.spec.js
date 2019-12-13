@@ -1,5 +1,5 @@
-const roomURL = "http://localhost:3000/rooms/";
-const logURL = "http://localhost:3000/users/login/";
+const roomURL = "https://hotel-api-staging.herokuapp.com/rooms/";
+const logURL = "https://hotel-api-staging.herokuapp.com/users/login/";
 
 describe("Manage rooms page", () => {
     beforeEach(() => {
