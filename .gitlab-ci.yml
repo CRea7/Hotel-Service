@@ -26,9 +26,10 @@ Testing:
   before_script:
     - npm run clean
     - npm install
-    - npm install @vue/cli
+    - npm install cypress --save
+    - npm install start-server-and-test --save
+    - npm install http-server --save
   script:
-    - npm run serve
     - npm run test
 
 preview - staging:
