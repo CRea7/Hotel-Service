@@ -54,6 +54,7 @@
                     })
                     .catch(error => {
                         this.errors.push(error);
+                        window.location.href = '/#/users/login';
                         // eslint-disable-next-line no-console
                         console.log(error)
                     })
