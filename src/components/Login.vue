@@ -86,6 +86,7 @@
                         // eslint-disable-next-line no-console
                         //console.log('Submitting in DonationForm : ' + JSON.stringify(this.guest, null, 5))
                         this.submitGuest(this.user)
+                        window.location.href = '/#/#';
                     }, 500)
                 }
             },
