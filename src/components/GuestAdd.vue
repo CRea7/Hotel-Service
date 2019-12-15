@@ -87,7 +87,9 @@
                 between: between(1, 6)
             }
         },
-
+        mounted() {
+            this.loadRooms();
+        },
         methods: {
             submit() {
                 // eslint-disable-next-line no-console
@@ -113,6 +115,21 @@
                         this.submitGuest(this.guest)
                     }, 500)
                 }
+            },
+            loadRooms: function () {
+                hotelservice.fetchRooms()
+                    .then(response => {
+                        // JSON responses are automatically parsed.
+                        // eslint-disable-next-line no-console
+                        //console.log(this.ready)
+                        //console.log(this.rooms)
+                    })
+                    .catch(error => {
+                        //this.errors.push(error);
+                        window.location.href = '/#/users/login';
+                        // eslint-disable-next-line no-console
+                        console.log(error)
+                    })
             },
             submitGuest: function (guest) {
                 //console.log('submitguest!')

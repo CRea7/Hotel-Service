@@ -31,7 +31,7 @@ export default {
       hotelservice.logoutUsers(id)
               .then(response => {
                 console.log(response);
-                window.location.href = '/#/#';
+                window.location.href = '/#/users/login';
                 alert("Logged out");
               })
               .catch(error => {

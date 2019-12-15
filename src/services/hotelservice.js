@@ -3,7 +3,7 @@ import Api from '@/services/api'
 export default {
     fetchGuests () {
         // eslint-disable-next-line no-console
-        console.log("all good");
+        //console.log("all good");
         return Api().get('/guests')
     },
 
@@ -28,7 +28,7 @@ export default {
 
     fetchRooms () {
         // eslint-disable-next-line no-console
-        console.log("all good");
+        //console.log("all good");
         return Api().get('/rooms')
     },
 
