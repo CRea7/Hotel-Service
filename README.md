@@ -10,6 +10,7 @@ This web app is designed to be used by staff in a hotel environment. It allows t
 * Chart.js
 * Cypress testing
 * Authentication testing in cypress
+* Database hoting with mongodb atlas
 ### Cypress test execution
 test execution video: https://www.youtube.com/watch?v=nj6vuuf8pnY&feature=youtu.be
 ![][datamodel]
