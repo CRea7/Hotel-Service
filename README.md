@@ -21,6 +21,8 @@ The web app it hoested using surge and the api is hosted using heroku. The datab
 Client side link: http://hotelservice-assignment.surge.sh/  
 Api hosting link: https://hotel-api-staging.herokuapp.com/
 
+#### Api github link : https://github.com/CRea7/Hotel-System
+
 ### references
 
 Json Web Tokens: https://www.youtube.com/watch?v=mbsmsi7l3r4  
