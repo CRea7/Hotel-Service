@@ -3,7 +3,6 @@ image: node:latest
 
 stages:
   - build
-  - test
   - deploy
 
 cache:
@@ -20,20 +19,6 @@ Build:
       - node_modules/
       - dist/
 
-
-Testing:
-  image: cypress/base:10
-  stage: test
-  before_script:
-    - npm run clean
-    - npm install
-    - npm install cypress --save
-    - npm install start-server-and-test --save
-    - npm install http-server --save
-    - npm i npm-run-all
-    - npm install @vue/cli
-  script:
-    - npm run test
 
 preview - staging:
   stage: deploy
