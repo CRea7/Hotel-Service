@@ -86,7 +86,6 @@
                         // eslint-disable-next-line no-console
                         //console.log('Submitting in DonationForm : ' + JSON.stringify(this.guest, null, 5))
                         this.submitGuest(this.user)
-                        window.location.href = '/#/#';
                     }, 500)
                 }
             },
@@ -95,6 +94,7 @@
                     .then(response => {
                         // JSON responses are automatically parsed.
                         console.log(response)
+                        window.location.href = '/#/#';
                     })
                     .catch(error => {
                         this.errors.push(error)
