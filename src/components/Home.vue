@@ -1,57 +1,58 @@
-<template>
-    <bar-chart :chartdata="chartData" :options="chartOptions"/>
-</template>
 <script>
     import Vue from 'vue'
     import { Bar } from "vue-chartjs";
     import hotelservice from "@/services/hotelservice";
 
-    Vue.use(Bar)
+    Vue.use(Bar);
 
     export default {
         extends: Bar,
         rooms: [],
-        props: ['options'],
-        data: () => ({
-            loaded: false,
-            chartdata: null
-        }),
-        mounted() {
-            this.loadRooms();
-            //this.renderChart(this.datacollection);
+        props: ['labels', 'data'],
+        number: null,
+        data() {
+            return {
+                number: this.roomStats()
+            };
         },
-        methods: {
-            fillData () {
-                this.datacollection = {
-                    labels: ['Ready','Occupied'],
+        computed: {
+            'chartdata': function () {
+                return {
+                    labels: ['Ready', 'Clean', 'Maintain', 'Occupied'],
                     datasets: [
                         {
-                            label: 'Data One',
-                            backgroundColor: '#f87979',
-                            data: [this.roomStats(), 0]
+                            label: 'Room status',
+                            backgroundColor: 'darkcyan',
+                            data: [3, 5, 2, 6]
                         }
                     ]
                 }
-            },
+            }
+        },
 
+        mounted() {
+            this.loadRooms();
+            this.renderChart(this.chartdata,
+                {responsive: true, maintainAspectRatio: false})
+        },
+        methods: {
+
+            getRandomInt () {
+                return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+            },
             loadRooms: function () {
                 hotelservice.fetchRooms()
                     .then(response => {
                         // JSON responses are automatically parsed.
                         this.rooms= response.data;
-
+                        this.roomStats()
                     })
                     .catch(error => {
-                        //this.errors.push(error);
+                        this.errors.push(error);
                         window.location.href = '/#/users/login';
                         // eslint-disable-next-line no-console
                         console.log(error)
                     })
-            },
-            getRandomInt () {
-                var num = this.ready
-                console.log(this.ready)
-                return num
             },
             roomStats: function () {
                  var readyRoom = 0;
@@ -60,15 +61,16 @@
                  var occupiedRooms = 0;
 
                 var rooms = this.rooms
-                var number = rooms.count()
-                for(var i = 0; i < number; i++){
+                for(var i = 0; i < rooms.length; i++){
                     if(rooms[i].state === 'Ready')
                     {
                         readyRoom++;
                     }
                 }
-                this.ready = readyRoom;
+                console.log(readyRoom);
+                this.number = readyRoom;
                 return readyRoom
+
             }
         }
     };
