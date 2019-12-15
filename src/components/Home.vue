@@ -45,10 +45,10 @@
                     .then(response => {
                         // JSON responses are automatically parsed.
                         this.rooms= response.data;
-                        this.roomStats()
+                        //this.roomStats()
                     })
                     .catch(error => {
-                        this.errors.push(error);
+                        //this.errors.push(error);
                         window.location.href = '/#/users/login';
                         // eslint-disable-next-line no-console
                         console.log(error)
